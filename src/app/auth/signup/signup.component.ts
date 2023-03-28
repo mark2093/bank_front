@@ -19,23 +19,23 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
   formSubmit(){
-    if(this.user.Email==''||this.user.Email==null)
-    {
-      alert('Email is required!!')
-    }
-    alert('submit');
+    // if(this.user.Email==''||this.user.Email==null)
+    // {
+    //   alert('Email is required!!')
+    // }
+    // alert('submit');
   
-    this.userService.addUser(this.user).subscribe(
-      (data)=>
-      {
-        alert("Success");
-      },
-      (error)=>{
-        console.log(error)
-        alert("SOMETHING WENT WRONG");
-      }
+    // this.userService.addUser(this.user).subscribe(
+    //   (data)=>
+    //   {
+    //     alert("Success");
+    //   },
+    //   (error)=>{
+    //     console.log(error)
+    //     alert("SOMETHING WENT WRONG");
+    //   }
       
-    );
+    // );
   }
 
 }

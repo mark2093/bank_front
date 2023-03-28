@@ -34,7 +34,7 @@ const ACCOUNT_ROUTE = [
         MatProgressSpinnerModule,
         MatTableModule,
         HttpClientModule,
-        RouterModule,
+        // RouterModule,
         RouterModule.forChild(ACCOUNT_ROUTE)
   ],
   schemas:[

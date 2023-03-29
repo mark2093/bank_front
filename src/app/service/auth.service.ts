@@ -11,11 +11,17 @@ export class AuthService {
   
 
   constructor(private http:HttpClient) {
-    this.baseUrl = 'http://localhost:8080/authenticate'
+    this.baseUrl = 'http://localhost:8080'
    }
 
    public getToken(data:any): Observable<any>{
-    return this.http.post(this.baseUrl,data)
+    let url = this.baseUrl + '/authenticate' 
+    return this.http.post(url,data)
+   }
+
+   public register(data:any) : Observable<any>{
+    let url = this.baseUrl + '/register' 
+    return this.http.post(url,data)
    }
 
 

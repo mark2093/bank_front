@@ -17,10 +17,15 @@ export class AccountDetailsComponent implements OnInit {
   constructor(private accountService : AccountService) { }
 
   ngOnInit() {
-    this.accountService.getAccountDetails().subscribe(data =>{
+    let userId = localStorage.getItem('user');
+    if(userId != null){
+      userId = JSON.parse(userId).id   
+    }
+    console.log(userId)
+    this.accountService.getAccountDetails(userId).subscribe(data =>{
     this.isloading= false
     //  this.dataSource = new MatTableDataSource<accountModel>(data);
-     this.accountsData = data
+     this.accountsData = data[0]
      
      console.log(this.accountsData)
     })

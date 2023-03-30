@@ -9,12 +9,18 @@ import { accountModel } from '../model/account-model';
 export class AccountService {
 
   private accountUrl: string;
+  
 
   constructor(private http:HttpClient) {
-    this.accountUrl = 'http://localhost:8080/account/1234567'
+    this.accountUrl = 'http://localhost:8088/account/'
    }
+   
 
-   public getAccountDetails(): Observable<accountModel[]>{
-    return this.http.get<accountModel[]>(this.accountUrl)
+   public getAccountDetails(acctNumber:any): Observable<accountModel[]>{
+    const url = this.accountUrl + 'user/' + acctNumber
+    const header ={
+      'Authorization' : 'Bearer '+ localStorage.getItem('token')
+     }
+    return this.http.get<accountModel[]>(url,{headers:header})
    }
 }

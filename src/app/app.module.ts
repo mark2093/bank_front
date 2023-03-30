@@ -1,4 +1,4 @@
-  //import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,23 +8,27 @@ import {MatTableModule} from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AccountService } from './service/account-service.service';
-import { SignupComponent } from './pages/signup/signup.component';
-import { NgModule } from '@angular/core';
-import { LoginComponent } from './pages/login/login.component';
+
 import { FrontPageComponent } from './pages/front-page/front-page.component';
 import { NavbarComponent } from './pages/front-page/navbar/navbar.component';
 import { BannerComponent } from './pages/front-page/banner/banner.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { AuthService } from './service/auth.service';
+import { TransferFundComponent } from './pages/transfer-fund/transfer-fund.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent,
-    LoginComponent,
+    
     FrontPageComponent,
     NavbarComponent,
-    BannerComponent,       
+    BannerComponent,
+    TransferFundComponent, 
+          
   ],
   imports: [
     BrowserModule,
@@ -34,11 +38,21 @@ import { BannerComponent } from './pages/front-page/banner/banner.component';
     HttpClientModule,
     Routing,
     MatTableModule,
-    NgModule,
+    FormsModule,
+    // NgModule,
+
 
   ],
-  providers: [AccountService],
-  //schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  exports: [
+    
+    MatFormFieldModule,
+    
+  ],
+  providers: [
+    AccountService,
+    AuthService
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

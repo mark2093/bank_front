@@ -1,7 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccountDetailsComponent } from './account-details/account-details.component';
-import { AccountBalanceComponent } from './account-balance/account-balance.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -15,7 +14,7 @@ const ACCOUNT_ROUTE = [
   {
     path:'', component : AccountManagementComponent, children :[
       {path : 'accountDetails', component: AccountDetailsComponent},
-      {path: '/balance', component: AccountBalanceComponent}
+    
     ]
   }
 ]
@@ -24,7 +23,7 @@ const ACCOUNT_ROUTE = [
   declarations: [
     AccountManagementComponent,
     AccountDetailsComponent,
-    AccountBalanceComponent
+    
   ],
   imports: [
     CommonModule,
@@ -34,7 +33,7 @@ const ACCOUNT_ROUTE = [
         MatProgressSpinnerModule,
         MatTableModule,
         HttpClientModule,
-        RouterModule,
+        // RouterModule,
         RouterModule.forChild(ACCOUNT_ROUTE)
   ],
   schemas:[

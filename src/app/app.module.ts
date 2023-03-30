@@ -14,6 +14,8 @@ import { NavbarComponent } from './pages/front-page/navbar/navbar.component';
 import { BannerComponent } from './pages/front-page/banner/banner.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AuthService } from './service/auth.service';
+import { TransferFundComponent } from './pages/transfer-fund/transfer-fund.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -24,7 +26,8 @@ import { AuthService } from './service/auth.service';
     
     FrontPageComponent,
     NavbarComponent,
-    BannerComponent, 
+    BannerComponent,
+    TransferFundComponent, 
           
   ],
   imports: [
@@ -35,6 +38,7 @@ import { AuthService } from './service/auth.service';
     HttpClientModule,
     Routing,
     MatTableModule,
+    FormsModule,
     // NgModule,
 
 

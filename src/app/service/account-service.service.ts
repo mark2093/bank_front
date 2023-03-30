@@ -12,7 +12,7 @@ export class AccountService {
   
 
   constructor(private http:HttpClient) {
-    this.accountUrl = 'http://localhost:8080/account/'
+    this.accountUrl = 'http://localhost:8088/account/'
    }
    
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { accountModel } from 'src/app/model/account-model';
 import { AccountService } from 'src/app/service/account-service.service';
 
 @Component({
@@ -7,22 +8,22 @@ import { AccountService } from 'src/app/service/account-service.service';
   styleUrls: ['./account-balance.component.scss']
 })
 export class AccountBalanceComponent implements OnInit {
-  accountsData:any;
+  rows: Array<accountModel>
+
   constructor(
     private accountService : AccountService
   ) { }
 
   ngOnInit() {
+    this.rows = []
     let userId = localStorage.getItem('user');
     if(userId != null){
       userId = JSON.parse(userId).id   
     }
     console.log(userId)
-    this.accountService.getAccountDetails(userId).subscribe(data =>{
-        //  this.dataSource = new MatTableDataSource<accountModel>(data);
-     this.accountsData = data[0]
-     
-     console.log(this.accountsData)
+    this.accountService.getAccountDetails(userId).subscribe(data =>{     
+     this.rows = data
+     console.log(this.rows)
     })
   }
 

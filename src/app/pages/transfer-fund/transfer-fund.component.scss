@@ -25,3 +25,35 @@ img {
 .full-width{
     width:70%;
 }
+.container{
+    min-width: 1000px !important;
+}
+.text-act{
+    margin-left: 15px;
+}
+.text-ifsc{
+    margin-left: 92px;
+}
+.text-amt{
+    margin-left: 71px;
+}
+
+.logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+   
+
+}
+
+
+.submit-form{
+     margin-left: 30px;
+}
+
+.error{
+    margin-left: 173px;
+    color: red;
+    font-weight: bold;
+}

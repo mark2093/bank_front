@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TransactionService } from 'src/app/service/transaction.service';
+import { forkJoin } from 'rxjs';
+import { transactionModel } from 'src/app/model/transaction-model';
+import { AccountService } from '../../service/account-service.service';
+import { TransactionService } from '../../service/transaction.service';
 
 
 @Component({
@@ -8,25 +11,36 @@ import { TransactionService } from 'src/app/service/transaction.service';
   styleUrls: ['./transaction.component.scss']
 })
 export class TransactionComponent implements OnInit {
-  transactionData:any;
+  rows : Array<transactionModel>
+  // transactionData = {
+  //   createdDate: "",
+  //   message: "",
+  //   amount: ""
+
+
+  // };
   constructor(
-    private transactionService : TransactionService
+    private accountService: AccountService,
+    private transactionService: TransactionService
   ) { }
 
   ngOnInit(): void {
+    this.rows = [];
     let userId = localStorage.getItem('user');
-    if(userId != null){
-      userId = JSON.parse(userId).id   
+    if (userId != null) {
+      userId = JSON.parse(userId).id
     }
     console.log(userId)
-   // this.transactionService.gettransactionDetails(userId).subscribe((data: any[]) =>{
-        //  this.dataSource = new MatTableDataSource<accountModel>(data);
-    // this.transactionData = data[0]
-     
-    /// console.log(this.transactionData)
-   // })
-   
-      }
-  }
 
+    this.accountService.getAccountDetails(userId).subscribe(data => {
+      console.log(data[0])
+
+      this.transactionService.gettransactionDetails(data[0].id).subscribe(data => {
+        this.rows = data;      
+       
+      })
+
+    })
+  }
+}
 

@@ -12,7 +12,7 @@ export class UserService {
   constructor(
     private http: HttpClient
 
-  ) { this.baseUrl = 'http://localhost:8088/users' }
+  ) { this.baseUrl = 'http://localhost:8080/users' }
 
   public getCurrentUserDetails(email: any): Observable<UserModel[]> {
     const url = this.baseUrl + '/me/' + email

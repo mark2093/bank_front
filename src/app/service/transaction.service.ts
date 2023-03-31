@@ -10,12 +10,17 @@ import{transactionModel}  from '../model/transaction-model'
 })
 export class TransactionService {
 
-  private accountUrl: string;
+  private baseUrl: string;
 
-  constructor(private http:HttpClient) {
-    this.accountUrl = 'http://localhost:8088/'
+  constructor(private http:HttpClient) {    
+    
+    this.baseUrl = 'http://localhost:8080'
    }
-  public gettransactionDetails(): Observable<transactionModel[]>{
-    return this.http.get<transactionModel[]>(this.accountUrl)
+  public gettransactionDetails(accountId:any): Observable<transactionModel[]>{
+    const url = this.baseUrl + '/transaction/' + accountId
+    const header = {
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+    return this.http.get<transactionModel[]>(url, { headers: header })
 }
 }

@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     FrontPageComponent,
     NavbarComponent,
     BannerComponent,
-    TransferFundComponent, 
+    TransferFundComponent,
+   
           
   ],
   imports: [

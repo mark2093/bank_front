@@ -1,6 +1,6 @@
 export interface transactionModel {
-    message:String,
-    amount:String,
-    createdDate:String,
-    accountId :object
+    message:string,
+    amount:string,
+    createdDate:string,
+    accountId :string
 }

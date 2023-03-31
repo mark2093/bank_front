@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { transactionModel } from 'src/app/model/transaction-model';
 import { AccountService } from '../../service/account-service.service';
@@ -12,6 +13,7 @@ import { TransactionService } from '../../service/transaction.service';
 })
 export class TransactionComponent implements OnInit {
   rows : Array<transactionModel>
+  
   // transactionData = {
   //   createdDate: "",
   //   message: "",
@@ -21,10 +23,12 @@ export class TransactionComponent implements OnInit {
   // };
   constructor(
     private accountService: AccountService,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private route: ActivatedRoute
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+ 
     this.rows = [];
     let userId = localStorage.getItem('user');
     if (userId != null) {
